@@ -24,7 +24,8 @@ namespace GuessingGame
             Console.Write("Enter your guess: ");
             string guess = Console.ReadLine();
             int parsedGuess = int.Parse(guess); // converting string to int
-            int secretNum = 21;
+            Random randomNum = new Random(); // instantiating new Random number object from static method
+            int secretNum = randomNum.Next(1, 100); // storing random number between 1 and 100 into secretNum variable
             int guessCount = 0; // initial guess count
             int guessLimit = 3; // guess limit of 4 chances to guess secret number since initial count is 0
             bool outOfGuesses = false; // boolean indicating if user is out of guesses
