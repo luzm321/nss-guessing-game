@@ -7,7 +7,7 @@ namespace GuessingGame
         static void Main(string[] args)
         {
             Console.WriteLine(@"
-            Let's Play a Guessing Game! Can you guess the secret number?
+            Let's Play a Guessing Game! Can you guess the secret number between 1 and 100?
                 _...._
               .`      `.
              / ***      \         
@@ -21,14 +21,38 @@ namespace GuessingGame
               `-......-`
             ");
 
-            Console.Write("Enter your guess: ");
-            string guess = Console.ReadLine();
-            int parsedGuess = int.Parse(guess); // converting string to int
+
+            Console.WriteLine(@"
+                Please choose a difficulty level:
+                ~Easy (8 Chances to Guess)
+                ~Medium (6 Chances to Guess)
+                ~Hard (4 Chances to Guess)
+            ");
+
+            Console.Write("Enter your choice: "); // prompting user to choose difficulty level
+            string difficultyLevel = Console.ReadLine().ToLower(); // storing user's choice of difficulty level
+
+            Console.Write($"Enter your guess: ");
+            string guess = Console.ReadLine(); // storing user's guess
+            int parsedGuess = int.Parse(guess); // converting guess from a string to int
             Random randomNum = new Random(); // instantiating new Random number object from static method
             int secretNum = randomNum.Next(1, 100); // storing random number between 1 and 100 into secretNum variable
             int guessCount = 0; // initial guess count
-            int guessLimit = 3; // guess limit of 4 chances to guess secret number since initial count is 0
+            int guessLimit; // guess limit of 4 chances to guess secret number since initial count is 0
             bool outOfGuesses = false; // boolean indicating if user is out of guesses
+
+            if (difficultyLevel == "easy")
+            {
+                guessLimit = 7;
+            }
+            else if (difficultyLevel == "medium")
+            {
+                guessLimit = 5;
+            }
+            else
+            {
+                guessLimit = 3;
+            }
 
             // while user's guess does not match secret number and user is not out of guesses, keep looping/asking user to guess
             while (parsedGuess != secretNum && !outOfGuesses)
