@@ -27,6 +27,7 @@ namespace GuessingGame
                 ~Easy (8 Chances to Guess)
                 ~Medium (6 Chances to Guess)
                 ~Hard (4 Chances to Guess)
+                ~Cheater (Unlimited Chances to Guess! :O)
             ");
 
             Console.Write("Enter your choice: "); // prompting user to choose difficulty level
@@ -41,6 +42,7 @@ namespace GuessingGame
             int guessLimit; // guess limit of 4 chances to guess secret number since initial count is 0
             bool outOfGuesses = false; // boolean indicating if user is out of guesses
 
+            // Determines number of chances user has to guess number depending on difficulty level chosen:
             if (difficultyLevel == "easy")
             {
                 guessLimit = 7;
@@ -49,9 +51,13 @@ namespace GuessingGame
             {
                 guessLimit = 5;
             }
-            else
+            else if (difficultyLevel == "hard")
             {
                 guessLimit = 3;
+            }
+            else
+            {
+                guessLimit = int.MaxValue; // a property of the integer data type that represents the largest possible value of an int 
             }
 
             // while user's guess does not match secret number and user is not out of guesses, keep looping/asking user to guess
