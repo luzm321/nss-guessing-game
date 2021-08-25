@@ -48,7 +48,7 @@ namespace GuessingGame
                     `-......-`  
                     ");
 
-                    int guessesLeft = guessLimit - guessCount; // variable will store number of guesses left and display count:
+                    int guessesLeft = guessLimit - guessCount; // variable will store number of guesses user has left and displays count:
                     Console.Write($"Enter your guess, you have {guessesLeft} guesses left: "); // prompt user to guess number again
                     parsedGuess = int.Parse(Console.ReadLine()); // converting string to int and storing user's guess to variable
                     guessCount++; // increment the guess count for each guess
